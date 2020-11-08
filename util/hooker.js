@@ -12,8 +12,8 @@ const hooker = {
     	} 
 		};
 
-		// fetch(uri,option)
-		// .then(json => console.log(json));
+		fetch(uri,option)
+		.then(json => console.log(json));
 		// .then(response => response.json())
     },
     hook_verif : function(obj,uri){
@@ -23,7 +23,7 @@ const hooker = {
             "embeds":[{
                     "title":"hook-rss | Webhook Verification",
                     "description": `hey **${obj.name}** your request was submited! one more think, please verif your request by submit this verification code to the site. \n `,
-                    "fields": [{"name":"Verif Code :", "value":`\`\`\`${obj.key}\`\`\`\n *note: please keep your access key and keep it secret!*`}]
+                    "fields": [{"name":"Verif Code :", "value":`\`\`\`${obj.previous_key}\`\`\`\n *note: please keep your access key and keep it secret!*`}]
                 }
             ]
         };
