@@ -20,4 +20,4 @@ mongoose.connect(url_server, {useNewUrlParser: true,useUnifiedTopology: true}, (
 
 // load model
 require("./hookChannel.model");
-
+require("./log.model");
