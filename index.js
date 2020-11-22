@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 
 require("dotenv").config();
 
+// static
+app.use(express.static("public"));
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -16,7 +19,7 @@ app.use(bodyParser.json())
 
 // webserver
 app.get("/",(req, resp) =>{
-	resp.json({status:"ok"})
+	resp.sendFile(__dirname+"/views/index.html")
 });
 
 // routing

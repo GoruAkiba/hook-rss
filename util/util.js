@@ -18,7 +18,7 @@ const utils = {
     },
 
     verif_hookUrl : (x) =>{
-        const hook_reg = new RegExp(/http(s)?\:\/\/discordapp\.com\/api\/webhooks\/\d{18}\/[0-Z 0-z]/);
+        const hook_reg = new RegExp(/http(s)?\:\/\/discord\.com\/api\/webhooks\/\d{18}\/[0-Z 0-z]/);
         return hook_reg.test(x);
     }
     

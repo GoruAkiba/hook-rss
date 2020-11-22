@@ -1,0 +1,222 @@
+<html>
+	<head>
+		<title>form application</title>
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- opengraph begin -->
+		<!-- ,,, -->
+		<!-- opengraph end -->
+
+		<!-- jquery -->
+		<!-- ,,, -->
+
+		<!-- bootstrap begin -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<!-- bootstrap end -->
+
+		<!-- additional -->
+		<link rel="stylesheet" href="/style.css">
+	</head>
+	<body class="p-3 bg-dark">
+		<div class="container ">
+			<div class="row  p-0  bg-light shadow-sm rounded">
+				<div class="col-lg-3 p-0 main-chld" id="profile">
+					<div class="banner p-2 m-0 text-light" style="background-color:#007BFF; height:60%">
+						<h2 class="text-light">Name of Application</h2>
+						<p>
+							Fast, reliable, and easy.
+						</p>
+					</div>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#007BFF" fill-opacity="1" d="M0,128L30,149.3C60,171,120,213,180,240C240,267,300,277,360,250.7C420,224,480,160,540,133.3C600,107,660,117,720,149.3C780,181,840,235,900,250.7C960,267,1020,245,1080,213.3C1140,181,1200,139,1260,122.7C1320,107,1380,117,1410,122.7L1440,128L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"></path></svg>
+					
+				</div>
+				<div class="col p-3 main-chld" id="content">
+					<div id="preface">
+						<h3>hello world</h3>
+						<p>
+							im <b>hook-rss app</b>, and designed for collect discord webhook throught public subscribe. if you interest with our rss service, here you can start to subscribe and get a newsletter.
+						</p>
+						<h3>About our service</h3>
+						<p>basically, we provide ..... elaborate your services</p>
+
+						<h3>Getting started</h3>
+						<p>yo... it'll be your beautifull day if you subscribe in our service. that was easy, just clik button down bellow and fulfill the application-form</p>
+						<button type="button" class="btn btn-primary" onclick="app.setApplicationForm()">Easy to start..</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<!-- main script -->
+	<script>
+		const app = {
+			target : $("#content"),
+			setApplicationForm : function(){
+				var elm = `
+					<div id="application-form">
+						<h3>application form</h3>
+						<p>
+							Please fulfill form below.
+						</p>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend" >
+								<span class="input-group-text" id="basic-addon3">Webhook Url:</span>
+							</div>
+							<input type="text" class="form-control" aria-describedby="basic-addon3" id="webhookUrl" placeholder="https://discord.com/api/webhooks/772345185044660256/a;sdjasmda/sa42kfa3_at5sSma_kCsnda_nAsdt5sSkCs">
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend" >
+								<span class="input-group-text" id="basic-addon3">Server Name:</span>
+							</div>
+							<input type="text" class="form-control" aria-describedby="basic-addon3" id="serverName" placeholder="Test Server">
+						</div>
+						<div id="form-status"></div>
+						<div class="d-flex bd-highlight mb-3" >
+							<button type="button" class="ml-auto btn btn-secondary p-2 bd-highlight m-1" onclick="app.applicationForm.clear()">clear</button>
+							<button type="button" class="btn btn-primary p-2 bd-highlight m-1" onclick="app.applicationForm.submit()">submit</button>
+						</div>
+					</div>
+				`;
+				console.log(this.target);
+				this.target.empty().append(elm);
+			},
+			setVerif : function(){
+				var elm = `
+					<div id="application-form">
+						<h3>Verif Webhook</h3>
+						<p>
+							One more step, find out the OTP code in your webhook channel.
+						</p>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend" >
+								<span class="input-group-text" id="basic-addon3">Verification Code :</span>
+							</div>
+							<input type="text" class="form-control" aria-describedby="basic-addon3" id="key" placeholder=" - - - - - -">
+						</div>
+						<div id="form-status"></div>
+						<div class="d-flex bd-highlight mb-3" >
+							<button type="button" class="btn btn-primary p-2 bd-highlight ml-auto" onclick="app.applicationForm.verif()">Send and Verif</button>
+						</div>
+					</div>
+				`;
+				console.log(this.target);
+				this.target.empty().append(elm);
+			},
+			setTHX : function(){
+				var elm = `
+					<div id="application-form">
+						<h1 style="m-auto">THANK YOU...!!!</h1>
+						<p>
+							Thaks for subscribing our service.<br>
+							you're webook already Verified!!! 
+						</p>
+					</div>
+				`;
+				console.log(this.target);
+				this.target.empty().append(elm);
+			},
+			applicationForm : {
+				hookTarget : "#webhookUrl",
+				nameTarget : "#serverName",
+				keyTarget : "#key",
+				status : "#form-status", 
+				pm : null,
+				submit: async function(){
+					const server = "/api/submit"
+					const hookUrl = $(this.hookTarget).val();
+					const name = $(this.nameTarget).val();
+
+					// console.log(name, hookUrl);
+
+					if(!hookUrl || !name){
+						return this.err("fields can't be empty!");
+					}
+
+					if(!this.verif_hookUrl(hookUrl)){
+						return this.err("Discord WebhookUrl isn't valid!!!")
+					}
+
+					const bdy = {
+						hookUrl,
+						name
+					}
+
+					var res = await fetch(server,
+						{
+							"headers": {
+								"content-type": "application/json"
+							},
+							"method": "post",
+							"body": JSON.stringify(bdy)
+						});
+
+						if(res.ok){
+							res = await res.json();
+							this.pm = res.primary_key;
+							this.succes("success! check ur webhook for the otp");
+							$(this.hookTarget).attr("disabled",true);
+							$(this.nameTarget).attr("disabled",true);
+							setTimeout(()=>{app.setVerif()},5000);
+						} else {
+							res = await res.json()
+							this.err(res.msg)
+						}
+					
+				},
+				verif: async function(){
+					const server = "/api/verif"
+					const key = $(this.keyTarget).val();
+
+					if(!key){
+						return this.err("fields can't be empty!");
+					}
+
+					const bdy = {
+						primary_key : this.pm,
+						key
+					}
+
+					var res = await fetch(server,
+						{
+							"headers": {
+								"content-type": "application/json"
+							},
+							"method": "post",
+							"body": JSON.stringify(bdy)
+						});
+
+						if(res.ok){
+							res = await res.json();
+							this.succes(res.msg);
+							setTimeout(()=>{
+								app.setTHX();
+							},2000)
+						} else {
+							res = await res.json()
+							this.err(res.msg)
+						}
+					
+				},
+				clear: function(){
+					$(this.hookTarget).val(null);
+					$(this.nameTarget).val(null);
+				},
+				verif_hookUrl : (x) =>{
+						const hook_reg = new RegExp(/http(s)?\:\/\/discord\.com\/api\/webhooks\/\d{18}\/[0-Z 0-z]/);
+						return hook_reg.test(x);
+				},
+				err: function(x){
+					$(this.status).empty().append(`<span class="text-danger">${x}</span>`)
+				},
+				succes: function(x){
+					$(this.status).empty().append(`<span class="text-success">${x}</span>`)
+				}
+			}
+		}
+	</script>
+</html>

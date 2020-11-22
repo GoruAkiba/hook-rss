@@ -6,12 +6,18 @@ const queue_req = model.queue_req;
 
 route.post("/submit", (req,resp) =>{
 	const body = req.body;
+		// console.log(body)
     const {hookUrl, name} = body;
-    if(!hookUrl || !name) return resp.json({status: "err", msg: "field can't be empty"})
-    if(!util.verif_hookUrl(hookUrl)) return resp.json({status: "err", msg: "hookUrl is not valid!"})
+    if(!hookUrl || !name) return resp.status(400).json({ msg: "field can't be empty"})
+    if(!util.verif_hookUrl(hookUrl)) return resp.status(400).json({ msg: "hookUrl is not valid!"})
     var sp = hookUrl.split("/"),
     primary_key = sp[5],
     hookToken = sp[6];
+
+	// check
+	if(queue_req.has(primary_key)){
+		return resp.status(400).json({msg: "Duplicated request!"})
+	}
 
 
 	// set queue_req
@@ -34,20 +40,20 @@ route.post("/submit", (req,resp) =>{
 route.post("/verif", async (req, resp) => {
 	const body = req.body;
 	
-    if(!queue_req.has(body.primary_key)) return resp.json({status:"404 | no record"});
+    if(!queue_req.has(body.primary_key)) return resp.status(404).json({msg:"no record can be found"});
     const docs = await model.hookChannel.has(body.primary_key)
 
-    if(docs) return resp.json({status:"Already Verified!!!"}); 
+    if(docs) return resp.json({msg:"Already Verified!!!"}); 
 
 	const obj = queue_req.get(body.primary_key);
 	if(body.key == obj.previous_key){
         hooker.hook_verified(obj,obj.hookUrl);
         model.hookChannel.set(obj);
 		return resp.json({
-			status: "ok, you are verified!"
+			msg: "ok, you are verified!"
 		})
 	} else {
-		return resp.json({status:"401 | wrong key"});
+		return resp.status(401).json({msg:"wrong key"});
 	}
 });
 

@@ -1,0 +1,8 @@
+h3::before {
+	content: "# ";
+	color: #CCE;
+}
+
+.main-chld{
+	min-height: 400px !important;
+}
