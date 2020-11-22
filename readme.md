@@ -37,6 +37,8 @@ dbpassword=<db_password>
 # berikut adalah contoh host, silahkan dapatkan dari connection cluster kalian sendiri.
 # it just dummy xample host, get it from ur cluster connection
 dbhost=cluster0.3cakl.mongodb.neto
+# Hosted Url, alamat landing applikasi kalian
+Host=https://hook-rss.gbsources.repl.co/
 ```
 
 ``<dbuser>``, ``<db_password>``, and ``<dbhost>`` rever to mongo db properties

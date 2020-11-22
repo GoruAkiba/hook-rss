@@ -112,7 +112,7 @@
 					<div id="application-form">
 						<h1 style="m-auto">THANK YOU...!!!</h1>
 						<p>
-							Thaks for subscribing our service.<br>
+							Thanks for subscribing our service.<br>
 							you're webook already Verified!!! 
 						</p>
 					</div>
@@ -216,6 +216,15 @@
 				succes: function(x){
 					$(this.status).empty().append(`<span class="text-success">${x}</span>`)
 				}
+			}
+		}
+
+		// start verif session if primary_key was provide
+		const qq = new URL(window.location.href).searchParams.get("c");
+		if(qq){
+			if(RegExp(/\d{18}/).test(qq)){
+				app.applicationForm.pm = qq
+				app.setVerif();
 			}
 		}
 	</script>
